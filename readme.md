@@ -99,3 +99,6 @@ bash rl_grpo.sh
 - Mixed Precision: bf16
 - Number of Generations per Sample: 18
 
+
+
+The code mainly refer to the [trl](https://github.com/huggingface/trl/blob/main/trl/trainer/grpo_trainer.py) and [open r1](https://github.com/huggingface/open-r1/blob/main/src/open_r1/grpo.py).
