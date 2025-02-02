@@ -1,4 +1,4 @@
-# Deepseek-R1-Zero Reproduction
+# mini-r1-zero
 
 This repo aims to reproduce the reasoning phenomenon "Aha Moment" of Deepseek-R1-Zero on the GSM8K dataset. I designed multiple rewards to guide the model's reasoning process.
 
