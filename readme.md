@@ -40,6 +40,7 @@ I am using the following reward functions:
     ```
 
 3. **Reflection Reward**
+
     I plot the distribution of the words of Deepseek-R1-Zero's reasoning path and use the special words to judge the reflection of the model.
 
     ![Word Distribution](./img/word_distribution.png)
