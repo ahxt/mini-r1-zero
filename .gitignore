@@ -1,0 +1,5 @@
+outputs
+wandb
+*.out
+__pycache__
+*.debug.sh

@@ -22,8 +22,8 @@ python3 grpo.py \
     --dataset_train_split='train' \
     --dataset_test_split='test' \
     --learning_rate 3e-6 \
-    --output_dir ./outputs/grpo \
-    --model_name_or_path Qwen/Qwen2.5-1.5B \
+    --output_dir /fs/scratch/PDS0352/xhan/mini-r1-zero \
+    --model_name_or_path meta-llama/Llama-3.2-1B-Instruct \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 32 \
     --bf16 \
@@ -36,3 +36,11 @@ python3 grpo.py \
     --num_train_epochs 1 \
     --torch_dtype bfloat16 \
     --attn_implementation sdpa \
+    --save_steps 25 \
+    --use_vllm \
+    --vllm_device cuda:0 \
+    --vllm_gpu_memory_utilization 0.5
+
+
+# meta-llama/Llama-3.2-1B
+# meta-llama/Llama-3.2-1B-Instruct

@@ -63,7 +63,8 @@ def format_reward(completions, **kwargs):
 
 def length_reward(completions, **kwargs):
     completion_contents = [completion[0]["content"] for completion in completions]
-    length_rewards = [len(content)/5000.0 for content in completion_contents]
+    # length_rewards = [len(content)/5000.0 for content in completion_contents]
+    length_rewards = [0.5 if len(content) > 500 else 0.0 for content in completion_contents]
     print(length_rewards)
     return length_rewards
 
@@ -124,7 +125,7 @@ if __name__ == "__main__":
     print(unique_id)
 
     # set the output_dir to the unique id
-    training_args.output_dir = f"outputs/{unique_id}"
+    training_args.output_dir = f"{training_args.output_dir}/{unique_id}"
     training_args.run_name = f"{training_args.run_name}_{unique_id}"
 
     print(script_args)

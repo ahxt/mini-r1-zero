@@ -391,8 +391,12 @@ class GRPOTrainer(Trainer):
             if self.state.global_step != self._last_loaded_step:
                 with unwrap_model_for_generation(model, self.accelerator) as unwrapped_model:
                     state_dict = unwrapped_model.state_dict()
+                    # Remove '_orig_mod' prefix from state dict keys
+                    state_dict = {k.replace('_orig_mod.', ''): v for k, v in state_dict.items()}
+                    # print(state_dict.keys())
                 if self.accelerator.is_main_process:
                     llm_model = self.llm.llm_engine.model_executor.driver_worker.model_runner.model
+                    # print(llm_model.state_dict().keys())
                     llm_model.load_weights(state_dict.items())
                 self._last_loaded_step = self.state.global_step
 
@@ -505,7 +509,7 @@ class GRPOTrainer(Trainer):
 
 
         import json
-        with open(f"./{self.args.output_dir}/prompts_completions_rewards_{time.time()}.jsonl", "w") as f:
+        with open(f"{self.args.output_dir}/prompts_completions_rewards_{time.time()}.jsonl", "w") as f:
             for prompt, completion, reward in zip(prompts, completions, rewards_per_func.cpu().numpy().tolist()):
                 f.write(json.dumps({"prompt": prompt, "completion": completion, "reward": reward}) + "\n")
 

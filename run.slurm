@@ -11,6 +11,9 @@
 
 
 # export WANDB_MODE=offline
+export HF_HOME="/fs/scratch/PDS0352/xhan/.cache/huggingface"
+export APPTAINER_CACHEDIR="/fs/scratch/PDS0352/xhan/.apptainer"
+
 export SSL_CERT_DIR=/etc/ssl/certs
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 # export TORCH_LOGS="+dynamo"
@@ -25,7 +28,7 @@ unset MPICC
 unset MPICXX
 
 
-cd $HOME/workspace/torchllm/rl_zero
+cd $HOME/workspace/mini-r1-zero
 pwd
 nvidia-smi
 singularity exec --nv --bind $HOME:$HOME --bind /tmp:/tmp $HOME/sif/sglang.sif bash rl_grpo.sh 
